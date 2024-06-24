@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0wnd0b2qda2c"]
+
+[ext_resource type="Texture2D" uid="uid://dtgrlfonfo5rp" path="res://Assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_qe062"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpfsv"]
+atlas = ExtResource("1_qe062")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kiyl"]
+atlas = ExtResource("1_qe062")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbed5"]
+atlas = ExtResource("1_qe062")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcxgx"]
+atlas = ExtResource("1_qe062")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjg0n"]
+atlas = ExtResource("1_qe062")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tajan"]
+atlas = ExtResource("1_qe062")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lp78b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpfsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kiyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbed5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcxgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjg0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tajan")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhgo"]
+size = Vector2(64, 64)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lp78b")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xfhgo")
