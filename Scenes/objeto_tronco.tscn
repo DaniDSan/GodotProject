@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://caaregifh3gqa"]
+
+[ext_resource type="Script" path="res://Scripts/objeto_tronco.gd" id="1_dqg5d"]
+[ext_resource type="Texture2D" uid="uid://dyxwbtchp5oom" path="res://Assets/Resources/Resources/W_Spawn.png" id="2_iliop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l17bq"]
+atlas = ExtResource("2_iliop")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3vjj"]
+atlas = ExtResource("2_iliop")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2c7u"]
+atlas = ExtResource("2_iliop")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1my4x"]
+atlas = ExtResource("2_iliop")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m65gf"]
+atlas = ExtResource("2_iliop")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghk3t"]
+atlas = ExtResource("2_iliop")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfh34"]
+atlas = ExtResource("2_iliop")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxahj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l17bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3vjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2c7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1my4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m65gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghk3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfh34")
+}],
+"loop": false,
+"name": &"Spawn",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnss4"]
+radius = 28.2843
+
+[node name="ObjetoTronco" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dqg5d")
+
+[node name="AnimacionTronco" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hxahj")
+animation = &"Spawn"
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionTronco" type="CollisionShape2D" parent="."]
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_wnss4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

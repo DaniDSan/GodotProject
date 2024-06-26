@@ -1,0 +1,138 @@
+[gd_scene load_steps=18 format=3 uid="uid://bjt88c1jqpcsk"]
+
+[ext_resource type="Script" path="res://Scripts/tree.gd" id="1_7cisq"]
+[ext_resource type="Texture2D" uid="uid://bpi2km50vnnqo" path="res://Assets/Resources/Trees/Tree.png" id="1_x2p2m"]
+[ext_resource type="PackedScene" uid="uid://caaregifh3gqa" path="res://Scenes/objeto_tronco.tscn" id="2_e3k0w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h8un"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab7pq"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu3vr"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffex4"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgmos"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hehj5"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erlpx"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywmuc"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t22dq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h8un")
+}],
+"loop": true,
+"name": &"TreeChopped",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab7pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu3vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffex4")
+}],
+"loop": true,
+"name": &"TreeHit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgmos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hehj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erlpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywmuc")
+}],
+"loop": true,
+"name": &"TreeStay",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvusy"]
+size = Vector2(32, 20.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7ogkg"]
+a = Vector2(0, -10)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pmelj"]
+a = Vector2(0, -10)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jl176"]
+a = Vector2(16, 0)
+b = Vector2(-16, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1t2ip"]
+a = Vector2(16, 0)
+b = Vector2(-16, 0)
+
+[node name="Tree" type="Area2D"]
+script = ExtResource("1_7cisq")
+Tronco = ExtResource("2_e3k0w")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t22dq")
+animation = &"TreeStay"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="AnimatedSprite2D"]
+collision_mask = 2
+gravity_scale = 0.0
+
+[node name="RigidCollisionTree" type="CollisionShape2D" parent="AnimatedSprite2D/RigidBody2D"]
+position = Vector2(0, 68)
+shape = SubResource("RectangleShape2D_kvusy")
+debug_color = Color(0.846322, 0.326808, 0.494536, 0.42)
+
+[node name="TreeCollisionLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-18, 68)
+shape = SubResource("SegmentShape2D_7ogkg")
+
+[node name="TreeCollisionRight" type="CollisionShape2D" parent="."]
+position = Vector2(18, 68)
+shape = SubResource("SegmentShape2D_pmelj")
+
+[node name="TreeCollisionUp" type="CollisionShape2D" parent="."]
+position = Vector2(0, 56)
+shape = SubResource("SegmentShape2D_jl176")
+
+[node name="TreeCollisionDown" type="CollisionShape2D" parent="."]
+position = Vector2(0, 80)
+shape = SubResource("SegmentShape2D_1t2ip")
+
+[node name="TreeRespawn" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="TreeRespawn" to="." method="_on_tree_respawn_timeout"]
