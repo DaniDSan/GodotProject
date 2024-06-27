@@ -33,10 +33,7 @@ script = ExtResource("3_s7d5b")
 [node name="Enemy" parent="Enemy/Path2D/EnemyPathing" instance=ExtResource("1_7nw2o")]
 
 [node name="Tree" parent="." instance=ExtResource("5_sf3ay")]
-position = Vector2(251, 272)
+position = Vector2(306, 285)
 
 [node name="Tree2" parent="." instance=ExtResource("5_sf3ay")]
-position = Vector2(237, 469)
-
-[node name="Tree3" parent="." instance=ExtResource("5_sf3ay")]
-position = Vector2(73, 295)
+position = Vector2(124, 276)

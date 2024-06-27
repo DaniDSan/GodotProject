@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d2osmc6kfnyw4"]
+[gd_scene load_steps=36 format=3 uid="uid://d2osmc6kfnyw4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_e0cu5"]
 [ext_resource type="Texture2D" uid="uid://bculx4mjcm11l" path="res://assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="2_6exgb"]
@@ -245,6 +245,9 @@ animations = [{
 radius = 24.0
 height = 70.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkdi6"]
+radius = 15.3794
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
@@ -262,6 +265,14 @@ shape = SubResource("CapsuleShape2D_frrht")
 wait_time = 0.25
 
 [node name="ActualDashCooldown" type="Timer" parent="."]
+
+[node name="Hand" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
+position = Vector2(31.25, 8.665)
+shape = SubResource("CircleShape2D_lkdi6")
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="ActualDashCooldown" to="." method="_on_actual_dash_cooldown_timeout"]
