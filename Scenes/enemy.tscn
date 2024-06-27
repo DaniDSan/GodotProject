@@ -1,55 +1,55 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0wnd0b2qda2c"]
 
-[ext_resource type="Texture2D" uid="uid://dtgrlfonfo5rp" path="res://Assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_qe062"]
+[ext_resource type="Texture2D" uid="uid://cjwawkcrf1v40" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2gnfv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpfsv"]
-atlas = ExtResource("1_qe062")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k5c0"]
+atlas = ExtResource("2_2gnfv")
 region = Rect2(0, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7kiyl"]
-atlas = ExtResource("1_qe062")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4g6t"]
+atlas = ExtResource("2_2gnfv")
 region = Rect2(192, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbed5"]
-atlas = ExtResource("1_qe062")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2oke"]
+atlas = ExtResource("2_2gnfv")
 region = Rect2(384, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcxgx"]
-atlas = ExtResource("1_qe062")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa1dx"]
+atlas = ExtResource("2_2gnfv")
 region = Rect2(576, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjg0n"]
-atlas = ExtResource("1_qe062")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ppwm"]
+atlas = ExtResource("2_2gnfv")
 region = Rect2(768, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tajan"]
-atlas = ExtResource("1_qe062")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhln8"]
+atlas = ExtResource("2_2gnfv")
 region = Rect2(960, 192, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lp78b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mpfsv")
+"texture": SubResource("AtlasTexture_5k5c0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7kiyl")
+"texture": SubResource("AtlasTexture_b4g6t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sbed5")
+"texture": SubResource("AtlasTexture_c2oke")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcxgx")
+"texture": SubResource("AtlasTexture_aa1dx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xjg0n")
+"texture": SubResource("AtlasTexture_6ppwm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tajan")
+"texture": SubResource("AtlasTexture_nhln8")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhgo"]
@@ -64,6 +64,7 @@ collision_mask = 0
 sprite_frames = SubResource("SpriteFrames_lp78b")
 animation = &"walk"
 autoplay = "walk"
+frame_progress = 0.0184839
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xfhgo")

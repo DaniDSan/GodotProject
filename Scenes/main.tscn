@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ja3eaxrsm3lc"]
+[gd_scene load_steps=7 format=3 uid="uid://ja3eaxrsm3lc"]
 
 [ext_resource type="PackedScene" uid="uid://b0wnd0b2qda2c" path="res://Scenes/enemy.tscn" id="1_7nw2o"]
 [ext_resource type="PackedScene" uid="uid://dbrdeen8n6qri" path="res://Scenes/Tower/tower.tscn" id="1_ldy38"]
 [ext_resource type="PackedScene" uid="uid://d2osmc6kfnyw4" path="res://Scenes/player.tscn" id="2_sss70"]
 [ext_resource type="Script" path="res://Scripts/enemyPathing.gd" id="3_s7d5b"]
+[ext_resource type="PackedScene" uid="uid://bjt88c1jqpcsk" path="res://Scenes/tree.tscn" id="5_sf3ay"]
 
 [sub_resource type="Curve2D" id="Curve2D_3m5jt"]
 _data = {
@@ -30,3 +31,12 @@ loop = false
 script = ExtResource("3_s7d5b")
 
 [node name="Enemy" parent="Enemy/Path2D/EnemyPathing" instance=ExtResource("1_7nw2o")]
+
+[node name="Tree" parent="." instance=ExtResource("5_sf3ay")]
+position = Vector2(251, 272)
+
+[node name="Tree2" parent="." instance=ExtResource("5_sf3ay")]
+position = Vector2(237, 469)
+
+[node name="Tree3" parent="." instance=ExtResource("5_sf3ay")]
+position = Vector2(73, 295)

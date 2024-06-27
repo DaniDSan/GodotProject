@@ -1,60 +1,60 @@
 [gd_scene load_steps=18 format=3 uid="uid://bjt88c1jqpcsk"]
 
 [ext_resource type="Script" path="res://Scripts/tree.gd" id="1_7cisq"]
-[ext_resource type="Texture2D" uid="uid://bpi2km50vnnqo" path="res://Assets/Resources/Trees/Tree.png" id="1_x2p2m"]
 [ext_resource type="PackedScene" uid="uid://caaregifh3gqa" path="res://Scenes/objeto_tronco.tscn" id="2_e3k0w"]
+[ext_resource type="Texture2D" uid="uid://b74hju4s6ymx3" path="res://assets/Resources/Trees/Tree.png" id="3_sw4oa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8h8un"]
-atlas = ExtResource("1_x2p2m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcp6o"]
+atlas = ExtResource("3_sw4oa")
 region = Rect2(0, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ab7pq"]
-atlas = ExtResource("1_x2p2m")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yu3vr"]
-atlas = ExtResource("1_x2p2m")
-region = Rect2(0, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffex4"]
-atlas = ExtResource("1_x2p2m")
-region = Rect2(192, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgmos"]
-atlas = ExtResource("1_x2p2m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgcql"]
+atlas = ExtResource("3_sw4oa")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hehj5"]
-atlas = ExtResource("1_x2p2m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v87ye"]
+atlas = ExtResource("3_sw4oa")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffyxc"]
+atlas = ExtResource("3_sw4oa")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6urco"]
+atlas = ExtResource("3_sw4oa")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovcl5"]
+atlas = ExtResource("3_sw4oa")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_erlpx"]
-atlas = ExtResource("1_x2p2m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_olx32"]
+atlas = ExtResource("3_sw4oa")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywmuc"]
-atlas = ExtResource("1_x2p2m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_57w6u"]
+atlas = ExtResource("3_sw4oa")
 region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t22dq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8h8un")
+"texture": SubResource("AtlasTexture_mcp6o")
 }],
 "loop": true,
 "name": &"TreeChopped",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ab7pq")
+"texture": SubResource("AtlasTexture_vgcql")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yu3vr")
+"texture": SubResource("AtlasTexture_v87ye")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ffex4")
+"texture": SubResource("AtlasTexture_ffyxc")
 }],
 "loop": true,
 "name": &"TreeHit",
@@ -62,16 +62,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cgmos")
+"texture": SubResource("AtlasTexture_6urco")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hehj5")
+"texture": SubResource("AtlasTexture_ovcl5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_erlpx")
+"texture": SubResource("AtlasTexture_olx32")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ywmuc")
+"texture": SubResource("AtlasTexture_57w6u")
 }],
 "loop": true,
 "name": &"TreeStay",
@@ -96,6 +96,8 @@ a = Vector2(16, 0)
 b = Vector2(-16, 0)
 
 [node name="Tree" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_7cisq")
 Tronco = ExtResource("2_e3k0w")
 metadata/_edit_group_ = true
