@@ -132,8 +132,10 @@ func walkAni():
 		$AnimatedSprite2D.play("walk")
 		if facing=="right" or facing=="right/up" or facing=="right/down":
 			$AnimatedSprite2D.flip_h = false
+			$Hand.position.x = 32.61
 		if facing=="left" or facing=="left/up" or facing=="left/down":
 			$AnimatedSprite2D.flip_h = true
+			$Hand.position.x = -32.61
 
 
 	if CanDash==false:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://d2osmc6kfnyw4"]
+[gd_scene load_steps=37 format=3 uid="uid://d2osmc6kfnyw4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_e0cu5"]
 [ext_resource type="Texture2D" uid="uid://bculx4mjcm11l" path="res://assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="2_6exgb"]
+[ext_resource type="Script" path="res://Scripts/hand.gd" id="3_pfmpa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4svh"]
 atlas = ExtResource("2_6exgb")
@@ -245,8 +246,8 @@ animations = [{
 radius = 24.0
 height = 70.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lkdi6"]
-radius = 15.3794
+[sub_resource type="CircleShape2D" id="CircleShape2D_i1gb7"]
+radius = 15.9013
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -266,13 +267,16 @@ wait_time = 0.25
 
 [node name="ActualDashCooldown" type="Timer" parent="."]
 
-[node name="Hand" type="StaticBody2D" parent="."]
+[node name="Hand" type="Area2D" parent="."]
+position = Vector2(32.61, 7.27)
 collision_layer = 0
-collision_mask = 0
+collision_mask = 16
+script = ExtResource("3_pfmpa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
-position = Vector2(31.25, 8.665)
-shape = SubResource("CircleShape2D_lkdi6")
+shape = SubResource("CircleShape2D_i1gb7")
+debug_color = Color(0.600222, 0.543424, 0, 0.42)
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="ActualDashCooldown" to="." method="_on_actual_dash_cooldown_timeout"]
+[connection signal="body_entered" from="Hand" to="Hand" method="_on_body_entered"]

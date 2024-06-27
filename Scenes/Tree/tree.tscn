@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bjt88c1jqpcsk"]
 
 [ext_resource type="Script" path="res://Scripts/tree.gd" id="1_7cisq"]
-[ext_resource type="PackedScene" uid="uid://caaregifh3gqa" path="res://Scenes/objeto_tronco.tscn" id="2_e3k0w"]
+[ext_resource type="PackedScene" uid="uid://caaregifh3gqa" path="res://Scenes/Tree/objeto_tronco.tscn" id="2_e3k0w"]
 [ext_resource type="Texture2D" uid="uid://b74hju4s6ymx3" path="res://assets/Resources/Trees/Tree.png" id="3_sw4oa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mcp6o"]
