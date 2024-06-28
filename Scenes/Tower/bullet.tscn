@@ -1,30 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv5qt5g32xhlb"]
 
 [ext_resource type="Texture2D" uid="uid://drk3uoqdehmh4" path="res://assets/Deco/01.png" id="1_8xkxr"]
-
-[sub_resource type="GDScript" id="GDScript_0a6ou"]
-script/source = "extends StaticBody2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_tsg7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1es7x"]
 size = Vector2(12, 16)
 
-[node name="Bullet" type="StaticBody2D"]
-script = SubResource("GDScript_0a6ou")
+[node name="Bullet" type="CharacterBody2D"]
+light_mask = 0
+visibility_layer = 4
+script = ExtResource("1_tsg7j")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.5, 0)
+rotation = 1.5708
 texture = ExtResource("1_8xkxr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

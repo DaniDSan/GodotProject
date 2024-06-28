@@ -9,6 +9,7 @@ var max_i
 var rotate_sprite = false
 var sprite_scale
 var rotation_speed = 15
+@export var enemy: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_get_values()
@@ -45,5 +46,5 @@ func _sprite_orientation(delta):
 		sprite_scale = Vector2(-1, 1)
 	else:
 		sprite_scale = Vector2(1, 1)
-		get_child(0).get_child(0).scale
-	get_child(0).get_child(0).scale = lerp(get_child(0).get_child(0).scale, sprite_scale, rotation_speed * delta)
+	if get_node_or_null("/") != null:
+		get_child(0).get_child(0).scale = lerp(get_child(0).get_child(0).scale, sprite_scale, rotation_speed * delta)

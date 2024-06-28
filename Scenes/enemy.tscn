@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0wnd0b2qda2c"]
+[gd_scene load_steps=11 format=3 uid="uid://b0wnd0b2qda2c"]
 
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ifdkc"]
 [ext_resource type="Texture2D" uid="uid://cjwawkcrf1v40" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2gnfv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5k5c0"]
@@ -53,12 +54,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhgo"]
-size = Vector2(64, 64)
+size = Vector2(62, 64)
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_ifdkc")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lp78b")
@@ -68,3 +70,17 @@ frame_progress = 0.0184839
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xfhgo")
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("RectangleShape2D_xfhgo")
+
+[node name="HealthText" type="RichTextLabel" parent="."]
+offset_left = -22.0
+offset_top = -40.0
+offset_right = 22.0
+offset_bottom = -8.0
+bbcode_enabled = true
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
