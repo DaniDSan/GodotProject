@@ -50,10 +50,10 @@ stream = ExtResource("8_wwhr4")
 stream = ExtResource("9_g1ub0")
 
 [node name="Tree" parent="." instance=ExtResource("5_sf3ay")]
-position = Vector2(121, 384)
+position = Vector2(69, 267)
 
 [node name="Tree2" parent="." instance=ExtResource("5_sf3ay")]
-position = Vector2(279, 321)
+position = Vector2(349, 600)
 
 [connection signal="andarSound" from="Player" to="." method="_on_player_andar_sound"]
 [connection signal="dashSound" from="Player" to="." method="_on_player_dash_sound"]
