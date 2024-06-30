@@ -9,7 +9,7 @@
 size = Vector2(80, 49)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dt4re"]
-radius = 153.883
+radius = 103.31
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hx2mv"]
 atlas = ExtResource("3_0e02c")
@@ -34,12 +34,12 @@ bullet = ExtResource("2_6f8fp")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -35)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_5p1fc")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+[node name="RigidBody2D" type="StaticBody2D" parent="Sprite2D"]
 collision_mask = 2
-gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
 light_mask = 2
@@ -49,14 +49,16 @@ shape = SubResource("RectangleShape2D_puoa3")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -37)
 shape = SubResource("CircleShape2D_dt4re")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -55)
 gizmo_extents = 15.6
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="Marker2D"]
-position = Vector2(30, 0)
+position = Vector2(15, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a75fl")
 
 [node name="ShootingPoint" type="Marker2D" parent="Marker2D/Sprite2D2"]
