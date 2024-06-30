@@ -1,60 +1,60 @@
 [gd_scene load_steps=18 format=3 uid="uid://bjt88c1jqpcsk"]
 
 [ext_resource type="Script" path="res://Scripts/tree.gd" id="1_7cisq"]
+[ext_resource type="Texture2D" uid="uid://b74hju4s6ymx3" path="res://assets/Resources/Trees/Tree.png" id="1_x2p2m"]
 [ext_resource type="PackedScene" uid="uid://caaregifh3gqa" path="res://Scenes/Tree/objeto_tronco.tscn" id="2_e3k0w"]
-[ext_resource type="Texture2D" uid="uid://b74hju4s6ymx3" path="res://assets/Resources/Trees/Tree.png" id="3_sw4oa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcp6o"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h8un"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(0, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgcql"]
-atlas = ExtResource("3_sw4oa")
-region = Rect2(0, 0, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab7pq"]
+atlas = ExtResource("1_x2p2m")
+region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v87ye"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu3vr"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(0, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffyxc"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffex4"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(192, 192, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6urco"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgmos"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovcl5"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hehj5"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_olx32"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_erlpx"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_57w6u"]
-atlas = ExtResource("3_sw4oa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywmuc"]
+atlas = ExtResource("1_x2p2m")
 region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t22dq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcp6o")
+"texture": SubResource("AtlasTexture_8h8un")
 }],
 "loop": true,
 "name": &"TreeChopped",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vgcql")
+"texture": SubResource("AtlasTexture_ab7pq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v87ye")
+"texture": SubResource("AtlasTexture_yu3vr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ffyxc")
+"texture": SubResource("AtlasTexture_ffex4")
 }],
 "loop": true,
 "name": &"TreeHit",
@@ -62,16 +62,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6urco")
+"texture": SubResource("AtlasTexture_cgmos")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ovcl5")
+"texture": SubResource("AtlasTexture_hehj5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_olx32")
+"texture": SubResource("AtlasTexture_erlpx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_57w6u")
+"texture": SubResource("AtlasTexture_ywmuc")
 }],
 "loop": true,
 "name": &"TreeStay",
@@ -104,7 +104,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t22dq")
-animation = &"TreeStay"
+animation = &"TreeHit"
 
 [node name="RigidBody2D" type="RigidBody2D" parent="AnimatedSprite2D"]
 collision_mask = 2
@@ -135,6 +135,12 @@ shape = SubResource("SegmentShape2D_1t2ip")
 wait_time = 2.0
 one_shot = true
 
+[node name="TimerTalarArbol" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="talarSound" from="." to="." method="_on_talar_sound"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="TreeRespawn" to="." method="_on_tree_respawn_timeout"]
+[connection signal="timeout" from="TimerTalarArbol" to="." method="_on_timer_talar_arbol_timeout"]

@@ -9,6 +9,9 @@ var facing
 var CanDash = true
 var CooldownDash = false
 
+signal andarSound
+signal dashSound
+
 func _physics_process(delta):
 	player_movement(delta)
 	dash()
@@ -147,3 +150,11 @@ func walkAni():
 		if facing=="down":
 			$AnimatedSprite2D.flip_h=false
 			$AnimatedSprite2D.play("golpeAbajo")
+			
+func _on_animated_sprite_2d_frame_changed():
+	if $AnimatedSprite2D.animation=="walk":
+		if $AnimatedSprite2D.frame==0 or $AnimatedSprite2D.frame==3:
+			andarSound.emit() # Replace with function body.
+		if $AnimatedSprite2D.animation=="golpeDerecha" or $AnimatedSprite2D.animation=="golpeArriba" or $AnimatedSprite2D.animation=="golpeAbajo":
+			if $AnimatedSprite2D.frame==0:
+				dashSound.emit()

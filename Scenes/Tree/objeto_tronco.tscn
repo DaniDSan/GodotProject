@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://caaregifh3gqa"]
+[gd_scene load_steps=13 format=3 uid="uid://caaregifh3gqa"]
 
 [ext_resource type="Script" path="res://Scripts/objeto_tronco.gd" id="1_ri5wr"]
 [ext_resource type="Texture2D" uid="uid://gafr3d88hx12" path="res://assets/Resources/Resources/W_Spawn.png" id="2_4cs7i"]
+[ext_resource type="AudioStream" uid="uid://d30ns5m3ycqbm" path="res://assets/Musica/troncoSpawn.wav" id="3_gb1yp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sgxeg"]
 atlas = ExtResource("2_4cs7i")
@@ -64,6 +65,7 @@ animations = [{
 radius = 13.0
 
 [node name="ObjetoTronco" type="RigidBody2D"]
+show_behind_parent = true
 collision_layer = 16
 collision_mask = 0
 gravity_scale = 0.0
@@ -79,3 +81,6 @@ frame_progress = 1.0
 
 [node name="CollisionTronco" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wnss4")
+
+[node name="TroncoSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gb1yp")
