@@ -141,11 +141,9 @@ func _on_tree_respawn_timeout():
 	VidaTree=true
 	$AnimatedSprite2D.play("TreeStay")
 
-
 func _on_timer_talar_arbol_timeout():
 	VidaTree=false
 	$TimerTalarArbol.stop()
-
 
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation=="TreeHit":

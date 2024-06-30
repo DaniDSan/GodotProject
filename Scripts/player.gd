@@ -155,6 +155,6 @@ func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation=="walk":
 		if $AnimatedSprite2D.frame==0 or $AnimatedSprite2D.frame==3:
 			andarSound.emit() # Replace with function body.
-		if $AnimatedSprite2D.animation=="golpeDerecha" or $AnimatedSprite2D.animation=="golpeArriba" or $AnimatedSprite2D.animation=="golpeAbajo":
-			if $AnimatedSprite2D.frame==0:
-				dashSound.emit()
+	if $AnimatedSprite2D.animation=="golpeDerecha" or $AnimatedSprite2D.animation=="golpeArriba" or $AnimatedSprite2D.animation=="golpeAbajo":
+		if $AnimatedSprite2D.frame==0:
+			dashSound.emit()

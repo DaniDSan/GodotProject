@@ -277,6 +277,7 @@ script = ExtResource("3_pfmpa")
 shape = SubResource("CircleShape2D_i1gb7")
 debug_color = Color(0.600222, 0.543424, 0, 0.42)
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="ActualDashCooldown" to="." method="_on_actual_dash_cooldown_timeout"]
 [connection signal="body_entered" from="Hand" to="Hand" method="_on_body_entered"]

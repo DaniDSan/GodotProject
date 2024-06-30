@@ -140,7 +140,6 @@ wait_time = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="talarSound" from="." to="." method="_on_talar_sound"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="TreeRespawn" to="." method="_on_tree_respawn_timeout"]
 [connection signal="timeout" from="TimerTalarArbol" to="." method="_on_timer_talar_arbol_timeout"]

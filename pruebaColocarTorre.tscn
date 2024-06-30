@@ -46,11 +46,13 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/3 = SubResource("TileSetAtlasSource_0s8rp")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("tile_map")]
+script = ExtResource("1_w272t")
+truck = ExtResource("2_0q47g")
+tile_map = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_gvnxs")
 format = 2
+layer_0/z_index = -10
 layer_0/tile_data = PackedInt32Array(0, 196611, 3, 2, 196611, 3, 65537, 196611, 3, 65539, 196611, 3, 4, 196611, 3, 65541, 196611, 3, 6, 196611, 3, 131078, 196611, 3, 131076, 196611, 3, 131074, 196611, 3, 131072, 196611, 3, 196609, 196611, 3, 196611, 196611, 3, 262144, 196611, 3, 196613, 196611, 3, 262148, 196611, 3, 262146, 196611, 3, 262150, 196611, 3, 327681, 196611, 3, 393216, 196611, 3, 393218, 196611, 3, 327683, 196611, 3, 393220, 196611, 3, 327685, 196611, 3, 393222, 196611, 3)
-script = ExtResource("1_w272t")
-truck = ExtResource("2_0q47g")
