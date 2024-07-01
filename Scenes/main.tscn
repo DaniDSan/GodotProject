@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ja3eaxrsm3lc"]
+[gd_scene load_steps=13 format=3 uid="uid://ja3eaxrsm3lc"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_284ua"]
+[ext_resource type="PackedScene" uid="uid://dbrdeen8n6qri" path="res://Scenes/Tower/tower.tscn" id="1_ldy38"]
 [ext_resource type="PackedScene" uid="uid://d2osmc6kfnyw4" path="res://Scenes/player.tscn" id="2_sss70"]
 [ext_resource type="PackedScene" uid="uid://bjt88c1jqpcsk" path="res://Scenes/Tree/tree.tscn" id="5_sf3ay"]
 [ext_resource type="AudioStream" uid="uid://d0sipwgdbdq56" path="res://assets/Musica/walking.wav" id="7_fltv7"]
@@ -102,6 +103,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_5u1u1")
 metadata/_edit_use_anchors_ = true
+
+[node name="Tower" parent="." instance=ExtResource("1_ldy38")]
+position = Vector2(352, 400)
+
+[node name="Tower2" parent="." instance=ExtResource("1_ldy38")]
+position = Vector2(760, 448)
 
 [connection signal="andarSound" from="Player" to="." method="_on_player_andar_sound"]
 [connection signal="dashSound" from="Player" to="." method="_on_player_dash_sound"]

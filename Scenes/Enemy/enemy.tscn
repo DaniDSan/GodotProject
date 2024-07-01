@@ -1,30 +1,30 @@
 [gd_scene load_steps=11 format=3 uid="uid://b0wnd0b2qda2c"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_3wsph"]
-[ext_resource type="Texture2D" uid="uid://cjwawkcrf1v40" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2gnfv"]
+[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_jebrd"]
+[ext_resource type="Texture2D" uid="uid://cjwawkcrf1v40" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_0s6jn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5k5c0"]
-atlas = ExtResource("2_2gnfv")
+atlas = ExtResource("2_0s6jn")
 region = Rect2(0, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4g6t"]
-atlas = ExtResource("2_2gnfv")
+atlas = ExtResource("2_0s6jn")
 region = Rect2(192, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2oke"]
-atlas = ExtResource("2_2gnfv")
+atlas = ExtResource("2_0s6jn")
 region = Rect2(384, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aa1dx"]
-atlas = ExtResource("2_2gnfv")
+atlas = ExtResource("2_0s6jn")
 region = Rect2(576, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ppwm"]
-atlas = ExtResource("2_2gnfv")
+atlas = ExtResource("2_0s6jn")
 region = Rect2(768, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhln8"]
-atlas = ExtResource("2_2gnfv")
+atlas = ExtResource("2_0s6jn")
 region = Rect2(960, 192, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lp78b"]
@@ -60,7 +60,7 @@ size = Vector2(62, 64)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_3wsph")
+script = ExtResource("1_jebrd")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lp78b")
@@ -72,6 +72,7 @@ frame_progress = 0.0184839
 shape = SubResource("RectangleShape2D_xfhgo")
 
 [node name="HitArea" type="Area2D" parent="."]
+collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("RectangleShape2D_xfhgo")
