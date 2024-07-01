@@ -12,4 +12,4 @@ func _on_hit_area_body_entered(body):
 	health -= 1
 	health_text.text = "[center]" + str(health) + "[/center]"
 	if health == 0:
-		queue_free()
+		get_node("../..").queue_free()
