@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b0wnd0b2qda2c"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ifdkc"]
+[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_3wsph"]
 [ext_resource type="Texture2D" uid="uid://cjwawkcrf1v40" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2gnfv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5k5c0"]
@@ -60,7 +60,7 @@ size = Vector2(62, 64)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_ifdkc")
+script = ExtResource("1_3wsph")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lp78b")

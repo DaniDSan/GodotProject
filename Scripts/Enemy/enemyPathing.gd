@@ -10,6 +10,7 @@ var rotate_sprite = false
 var sprite_scale
 var rotation_speed = 15
 @export var enemy: PackedScene
+var healthText
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_get_values()
@@ -24,15 +25,19 @@ func _get_values():
 	else:
 		sprite_scale = Vector2(1, 1)
 		get_child(0).get_child(0).scale = sprite_scale
+		
+	healthText = get_tree().root.get_node("Main/RichTextLabel")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_path_movement(delta)
-	_sprite_orientation(delta)
+	#_sprite_orientation(delta)
 	
 func _path_movement(delta):
 	progress += speed * delta
-	
+	if progress_ratio == 1:
+		healthText.health -= 1
+		queue_free()
 func _sprite_orientation(delta):
 	sprite_pos = position
 	if (sprite_pos.x >= next_pos.x - 5 && sprite_pos.x <= next_pos.x + 5) && (sprite_pos.y >= next_pos.y - 5 && sprite_pos.y <= next_pos.y + 5):

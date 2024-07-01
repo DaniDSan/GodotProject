@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbrdeen8n6qri"]
 
-[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_aqopp"]
+[ext_resource type="Script" path="res://Scripts/Tower/tower.gd" id="1_aqopp"]
 [ext_resource type="Texture2D" uid="uid://wlven5fmns5i" path="res://assets/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="2_5p1fc"]
 [ext_resource type="PackedScene" uid="uid://cv5qt5g32xhlb" path="res://Scenes/Tower/bullet.tscn" id="2_6f8fp"]
 [ext_resource type="Texture2D" uid="uid://o28t88t58vp4" path="res://assets/Factions/Knights/Troops/Archer/Arrow/Arrow.png" id="3_0e02c"]

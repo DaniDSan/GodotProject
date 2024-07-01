@@ -9,9 +9,9 @@ var filled_tiles = []
 @export var tower: PackedScene
 
 func _ready():
-	tile_map = get_parent().get_parent().get_node("TileMap")
+	tile_map = get_parent().get_parent().get_node("Floor")
 	
-func _process(delta):
+func _process(_delta):
 	grab_object()
 	place_object()
 	

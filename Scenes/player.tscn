@@ -1,8 +1,8 @@
 [gd_scene load_steps=38 format=3 uid="uid://d2osmc6kfnyw4"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_e0cu5"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_e0cu5"]
 [ext_resource type="Texture2D" uid="uid://bculx4mjcm11l" path="res://assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="2_6exgb"]
-[ext_resource type="Script" path="res://Scripts/hand.gd" id="3_pfmpa"]
+[ext_resource type="Script" path="res://Scripts/Player/hand.gd" id="3_pfmpa"]
 [ext_resource type="PackedScene" uid="uid://dbrdeen8n6qri" path="res://Scenes/Tower/tower.tscn" id="4_ypxv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4svh"]

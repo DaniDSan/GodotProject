@@ -121,9 +121,6 @@ func dash():
 func _on_dash_cooldown_timeout():
 	CanDash = true # Replace with function body.
 
-func _on_npc_body_entered(body):
-	print(2)
-
 func _on_actual_dash_cooldown_timeout():
 	CooldownDash=false
 
