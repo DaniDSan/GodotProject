@@ -1,5 +1,6 @@
 extends Area2D
 
+
 # Collisiones : Dentro del árbol
 var DentroIzq = false
 var DentroDer = false
@@ -29,6 +30,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	print($RigidBody2D/RigidCollisionTree.shape.extents)
 	# Estado : Si está vivo
 	if VidaTree==true:
 		TroncoSpawnAbierto=false
@@ -92,23 +94,26 @@ func _process(_delta):
 			TroncoSpawnAbierto=true
 
 func SpawnTronco():
+	var spawnArea = $Area2D/SpawnTronco.shape.extents
+	var rigidBodyArea = $RigidBody2D/RigidCollisionTree.shape.extents
+	var origin = $Area2D/SpawnTronco.position
 	var TroncoTemp = Tronco.instantiate()
-	var NumeroAzar = rng.randi_range(1,4)
 	
 	add_child(TroncoTemp)
-	if NumeroAzar==1:
-		TroncoTemp.position.x = $TreeCollisionRight.position.x + 10 + rng.randf_range(0,50)
-		TroncoTemp.position.y = ($AnimatedSprite2D/RigidBody2D/RigidCollisionTree.position.y) + rng.randf_range(-30,30)
-	if NumeroAzar==2:
-		TroncoTemp.position.x = $TreeCollisionLeft.position.x - 10 + rng.randf_range(-50,0)
-		TroncoTemp.position.y = ($AnimatedSprite2D/RigidBody2D/RigidCollisionTree.position.y) + rng.randf_range(-30,30)
-	if NumeroAzar==3:
-		TroncoTemp.position.x = rng.randf_range(-50,50)
-		TroncoTemp.position.y = ($AnimatedSprite2D/RigidBody2D/RigidCollisionTree.position.y) - $TreeCollisionUp.position.y + rng.randf_range(-30,0)
-	if NumeroAzar==4:
-		TroncoTemp.position.x = rng.randf_range(-50,50)
-		TroncoTemp.position.y = $TreeCollisionDown.position.y + rng.randf_range(0,30)
+	
+	var x = randf_range(-spawnArea.x , spawnArea.x)
+	var y = randf_range(-spawnArea.y , spawnArea.y)
 
+	TroncoTemp.position.x = x + origin.x
+	TroncoTemp.position.y = y + origin.y
+
+	if TroncoTemp.position > -rigidBodyArea and TroncoTemp.position < rigidBodyArea:
+		x = randf_range(-spawnArea.x , spawnArea.x)
+		y = randf_range(-spawnArea.y , spawnArea.y)
+
+		TroncoTemp.position.x = x + origin.x
+		TroncoTemp.position.y = y + origin.y
+	
 func _on_body_entered(body):
 	# Entra Colisión : Left
 	if body.position.x < (global_position.x + $TreeCollisionLeft.position.x):
