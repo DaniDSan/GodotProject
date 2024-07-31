@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1yofo5bpgm54"]
+
+[ext_resource type="Texture2D" uid="uid://csbhywxie10b7" path="res://assets/Terrain/Water/Rocks/Rocks_01.png" id="1_ox6ef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8fi7"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emn7o"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hax3"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyn5p"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjai5"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjuoj"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y28x6"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n88p3"]
+atlas = ExtResource("1_ox6ef")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lugg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8fi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emn7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hax3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyn5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjai5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjuoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y28x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n88p3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubn11"]
+radius = 12.1655
+
+[node name="objeto_roca" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lugg3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ubn11")

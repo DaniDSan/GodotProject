@@ -11,16 +11,16 @@ var DentroAbajo = false
 signal talarSound
 
 # Respawn : Hace que aparezca SOLO 1 tronco
-var TroncoSpawnAbierto = false
+var MaterialSpawnAbierto = false
 
 # Respawn : Activa el timer de respawn del Árbol
 var TiempoRespawn = false
 
 # Respawn : PackedScene del Tronco y numero aleatorios indicando la zona donde spawnean
-@export var Tronco: PackedScene
+@export var Materiales: PackedScene
 
 # Estado : Si está vivo o muerto el Árbol
-var VidaTree = true
+var Vida = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,95 +31,100 @@ func _ready():
 func _process(_delta):
 	
 	# Estado : Si está vivo
-	if VidaTree==true:
-		TroncoSpawnAbierto=false
+	if Vida==true:
+		MaterialSpawnAbierto=false
 		if DentroIzq==true:
 			if Input.is_action_pressed("interactuar"):
-				if $TimerTalarArbol.get_time_left() == 0:
-					$TimerTalarArbol.start()
+				if $TiempoInteracción.get_time_left() == 0:
+					$TiempoInteracción.start()
 				else:
-					$TimerTalarArbol.paused = false
+					$TiempoInteracción.paused = false
 				$AnimatedSprite2D.play("TreeHit")
 				$AnimatedSprite2D.flip_h=true
 			if Input.is_action_just_released("interactuar"):
 				$AnimatedSprite2D.play("TreeStay")
 				$AnimatedSprite2D.flip_h=false
-				$TimerTalarArbol.paused = true
+				$TiempoInteracción.paused = true
 				
 		if DentroDer == true:
 			if Input.is_action_pressed("interactuar"):
-				if $TimerTalarArbol.get_time_left() == 0:
-					$TimerTalarArbol.start()
+				if $TiempoInteracción.get_time_left() == 0:
+					$TiempoInteracción.start()
 				else:
-					$TimerTalarArbol.paused = false
+					$TiempoInteracción.paused = false
 				$AnimatedSprite2D.play("TreeHit")
 			if Input.is_action_just_released("interactuar"):
 				$AnimatedSprite2D.play("TreeStay")
-				$TimerTalarArbol.paused = true
+				$TiempoInteracción.paused = true
 				
 		if DentroArriba==true:
 			if Input.is_action_pressed("interactuar"):
-				if $TimerTalarArbol.get_time_left() == 0:
-					$TimerTalarArbol.start()
+				if $TiempoInteracción.get_time_left() == 0:
+					$TiempoInteracción.start()
 				else:
-					$TimerTalarArbol.paused = false
+					$TiempoInteracción.paused = false
 				$AnimatedSprite2D.play("TreeHit")
 				$AnimatedSprite2D.play("TreeHit")
 				$AnimatedSprite2D.flip_h=true
 			if Input.is_action_just_released("interactuar"):
 				$AnimatedSprite2D.play("TreeStay")
 				$AnimatedSprite2D.flip_h=false
-				$TimerTalarArbol.paused = true
+				$TiempoInteracción.paused = true
 			
 		if DentroAbajo==true:
 			if Input.is_action_pressed("interactuar"):
-				if $TimerTalarArbol.get_time_left() == 0:
-					$TimerTalarArbol.start()
+				if $TiempoInteracción.get_time_left() == 0:
+					$TiempoInteracción.start()
 				else:
-					$TimerTalarArbol.paused = false
+					$TiempoInteracción.paused = false
 				$AnimatedSprite2D.play("TreeHit")
 			if Input.is_action_just_released("interactuar"):
 				$AnimatedSprite2D.play("TreeStay")
-				$TimerTalarArbol.paused = true
+				$TiempoInteracción.paused = true
 	# Estado : Si está muerto
 	else:
 		$AnimatedSprite2D.play("TreeChopped")
 		$AnimatedSprite2D.flip_h=false
 		if TiempoRespawn==false:
 			TiempoRespawn=true
-			$TreeRespawn.start()
+			$TiempoRespawn.start()
+		if MaterialSpawnAbierto==false:
 			SpawnTronco()
-		"""if TroncoSpawnAbierto==false:
-			SpawnTronco()
-			TroncoSpawnAbierto=true"""
+			MaterialSpawnAbierto=true
 
 func SpawnTronco():
-	var spawnArea = $Area2D/SpawnTronco.shape.extents
-	var origin = $Area2D/SpawnTronco.position
+	var spawnArea = $SpawnMaterial/AreaSpawnMaterial.shape.extents
+	var origin = $SpawnMaterial/AreaSpawnMaterial.position
 	
-	var rigidBodyArea = $RigidBody2D/RigidCollisionTree.shape.extents
+	var rigidBodyArea = $RigidBody/AreaRigidBody.shape.extents
+
+	var MaterialesTemp = Materiales.instantiate()
 	
-	var TroncoTemp = Tronco.instantiate()
-	
-	add_child(TroncoTemp)
-	
+	add_child(MaterialesTemp)
+
 	var x = randf_range(-spawnArea.x , spawnArea.x)
 	var y = randf_range(-spawnArea.y , spawnArea.y)
 
-	TroncoTemp.position.x = x + origin.x
-	TroncoTemp.position.y = y + origin.y
-
-	if TroncoTemp.position > - rigidBodyArea and TroncoTemp.position < rigidBodyArea:
-		x = randf_range(-spawnArea.x , spawnArea.x)
-		y = randf_range(-spawnArea.y , spawnArea.y)
-
-		TroncoTemp.position.x = x + origin.x
-		TroncoTemp.position.y = y + origin.y
+	MaterialesTemp.position.x = x + origin.x
+	MaterialesTemp.position.y = y + origin.y
+	
+	var oniichan=true
+	
+	while oniichan==true:
+		if MaterialesTemp.position.x >= - rigidBodyArea.x and MaterialesTemp.position.x <= rigidBodyArea.x and MaterialesTemp.position.y >= - rigidBodyArea.y and MaterialesTemp.position.y <= rigidBodyArea.y:
+			x = randf_range(-spawnArea.x , spawnArea.x)
+			y = randf_range(-spawnArea.y , spawnArea.y)
+			
+			MaterialesTemp.position.x = x + origin.x
+			MaterialesTemp.position.y = y + origin.y
+			oniichan=true
+		else:
+			oniichan=false
 	
 func _on_body_entered(body):
 	
-	var colisionTalarPuntoMedio = $ColisionTalar.shape.extents
-	var colisionTalarPosicion = $ColisionTalar.position
+	var colisionTalarPuntoMedio = $CollisionInteractuar.shape.extents
+	var colisionTalarPosicion = $CollisionInteractuar.position
 	
 	var positionGlobalColision = global_position + colisionTalarPosicion
 
@@ -136,14 +141,8 @@ func _on_body_entered(body):
 	if body.position.y > (positionGlobalColision.y + colisionTalarPuntoMedio.y):
 		DentroAbajo = true
 	
-	print("DentroArriba", " ", DentroArriba)
-	print("DentroDer", " ", DentroDer)
-	print("DentroIzq", " ", DentroIzq)
-	print("DentroAbajo", " ", DentroAbajo)
-	print()
-	
 func _on_body_exited(_body):
-	$TimerTalarArbol.paused = true
+	$TiempoInteracción.paused = true
 	$AnimatedSprite2D.play("TreeStay")
 	# Salida Colisión : Left
 	DentroIzq = false
@@ -154,16 +153,17 @@ func _on_body_exited(_body):
 	# Salida Colisión : Down
 	DentroAbajo = false
 
-func _on_tree_respawn_timeout():
+func _on_tiempo_respawn_timeout():
 	TiempoRespawn=false
-	VidaTree=true
+	Vida=true
 	$AnimatedSprite2D.play("TreeStay")
 
-func _on_timer_talar_arbol_timeout():
-	VidaTree=false
-	$TimerTalarArbol.stop()
+func _on_tiempo_interacción_timeout():
+	Vida=false
+	$TiempoInteracción.stop()
 
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation=="TreeHit":
 		if $AnimatedSprite2D.frame==2:
 			talarSound.emit()
+

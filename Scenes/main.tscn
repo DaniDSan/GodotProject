@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://ja3eaxrsm3lc"]
+[gd_scene load_steps=13 format=3 uid="uid://ja3eaxrsm3lc"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_284ua"]
 [ext_resource type="PackedScene" uid="uid://d2osmc6kfnyw4" path="res://Scenes/player.tscn" id="2_sss70"]
-[ext_resource type="PackedScene" uid="uid://bjt88c1jqpcsk" path="res://Scenes/Tree/tree.tscn" id="5_sf3ay"]
 [ext_resource type="AudioStream" uid="uid://d0sipwgdbdq56" path="res://assets/Musica/walking.wav" id="7_fltv7"]
 [ext_resource type="AudioStream" uid="uid://devg8veeq3u11" path="res://assets/Musica/dash.wav" id="8_wwhr4"]
 [ext_resource type="Script" path="res://Scripts/RichTextLabel.gd" id="9_5u1u1"]
 [ext_resource type="AudioStream" uid="uid://d1pjlnr1mie7r" path="res://assets/Musica/talar.mp3" id="9_g1ub0"]
 [ext_resource type="Script" path="res://Scripts/Enemy/PathSpawner.gd" id="9_s3ibb"]
+[ext_resource type="PackedScene" uid="uid://bhepjaele0a2e" path="res://Scenes/Rock/rock.tscn" id="10_85vpy"]
 [ext_resource type="Texture2D" uid="uid://yaj20mpy84l6" path="res://assets/Terrain/Ground/Tilemap_Flat.png" id="10_rfdvq"]
+[ext_resource type="PackedScene" uid="uid://c1pg5m7qvhc5k" path="res://Scenes/Tree/treeh.tscn" id="10_rhwtu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnm53"]
 texture = ExtResource("10_rfdvq")
@@ -69,9 +70,6 @@ stream = ExtResource("8_wwhr4")
 [node name="Talar" type="AudioStreamPlayer" parent="AudioContainer"]
 stream = ExtResource("9_g1ub0")
 
-[node name="Tree" parent="." instance=ExtResource("5_sf3ay")]
-position = Vector2(833, 270)
-
 [node name="Floor" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hq5qh")
 format = 2
@@ -100,8 +98,14 @@ grow_vertical = 2
 script = ExtResource("9_5u1u1")
 metadata/_edit_use_anchors_ = true
 
+[node name="Rock" parent="." instance=ExtResource("10_85vpy")]
+position = Vector2(345, 404)
+collision_mask = 2
+
+[node name="FuenteMateriales(BASE)" parent="." instance=ExtResource("10_rhwtu")]
+position = Vector2(762, 261)
+
 [connection signal="andarSound" from="Player" to="." method="_on_player_andar_sound"]
 [connection signal="dashSound" from="Player" to="." method="_on_player_dash_sound"]
-[connection signal="talarSound" from="Tree" to="." method="_on_tree_talar_sound"]
 [connection signal="timeout" from="PathSpawner/SpawnRateTimer" to="PathSpawner" method="_on_spawn_rate_timer_timeout"]
 [connection signal="timeout" from="PathSpawner/StartTimer" to="PathSpawner" method="_on_start_timer_timeout"]

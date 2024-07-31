@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4g5gtvneysuq"]
+
+[ext_resource type="Script" path="res://Scripts/fuente_materiales(base).gd" id="1_wy2mp"]
+
+[node name="FuenteMateriales(BASE)" type="Area2D"]
+collision_layer = 0
+collision_mask = 18
+script = ExtResource("1_wy2mp")
+metadata/_edit_group_ = true
+
+[node name="CollisionInteractuar" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="SpawnMaterial" type="Area2D" parent="."]
+
+[node name="AreaSpawnMaterial" type="CollisionShape2D" parent="SpawnMaterial"]
+debug_color = Color(0.139081, 0.631283, 0.40032, 0.42)
+
+[node name="RigidBody" type="RigidBody2D" parent="."]
+collision_mask = 18
+
+[node name="AreaRigidBody" type="CollisionShape2D" parent="RigidBody"]
+debug_color = Color(0.849778, 0.340632, 0.408813, 0.42)
+
+[node name="TiempoRespawn" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="TiempoInteracción" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="TiempoRespawn" to="." method="_on_tiempo_respawn_timeout"]
+[connection signal="timeout" from="TiempoInteracción" to="." method="_on_tiempo_interacción_timeout"]

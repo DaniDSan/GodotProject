@@ -109,7 +109,6 @@ func dash():
 		CooldownDash=true
 		CanDash = false
 		
-		
 	if Input.is_action_just_pressed("dash") and facing=="left/down" and CanDash==true and CooldownDash== false:
 		velocity.y =  velocity.y + 247.4873
 		velocity.x =  velocity.x - 247.4873

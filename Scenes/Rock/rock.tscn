@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=3 uid="uid://bhepjaele0a2e"]
+
+[ext_resource type="PackedScene" uid="uid://d4g5gtvneysuq" path="res://Scenes/BaseScene/fuente_materiales(base).tscn" id="1_tita4"]
+[ext_resource type="PackedScene" uid="uid://c1yofo5bpgm54" path="res://Scenes/Rock/objeto_roca.tscn" id="2_be35n"]
+[ext_resource type="Texture2D" uid="uid://bv5mcq6bkgxay" path="res://assets/Terrain/Water/Rocks/Rocks_04.png" id="2_pcmac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctn0k"]
+size = Vector2(102, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0psq6"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa73k"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbrvr"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yb7d"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6cp1"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4muf"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2mxe"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1g0q"]
+atlas = ExtResource("2_pcmac")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tchf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0psq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa73k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbrvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yb7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6cp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4muf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2mxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1g0q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4o3oy"]
+size = Vector2(171, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj27v"]
+size = Vector2(83, 57)
+
+[node name="Rock" instance=ExtResource("1_tita4")]
+Materiales = ExtResource("2_be35n")
+
+[node name="CollisionInteractuar" parent="." index="0"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_ctn0k")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_tchf2")
+
+[node name="AreaSpawnMaterial" parent="SpawnMaterial" index="0"]
+shape = SubResource("RectangleShape2D_4o3oy")
+debug_color = Color(0.248361, 0.623978, 0.354833, 0.42)
+
+[node name="RigidBody" parent="." index="3"]
+gravity_scale = 0.0
+
+[node name="AreaRigidBody" parent="RigidBody" index="0"]
+position = Vector2(1.5, -1.5)
+shape = SubResource("RectangleShape2D_uj27v")
+debug_color = Color(0.841715, 0.339222, 0.46454, 0.42)

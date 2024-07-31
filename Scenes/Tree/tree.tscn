@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjt88c1jqpcsk"]
+[gd_scene load_steps=16 format=3 uid="uid://bjt88c1jqpcsk"]
 
 [ext_resource type="Script" path="res://Scripts/Tree/tree.gd" id="1_7cisq"]
 [ext_resource type="Texture2D" uid="uid://b74hju4s6ymx3" path="res://assets/Resources/Trees/Tree.png" id="1_x2p2m"]
@@ -81,25 +81,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7ogkg"]
-a = Vector2(0, -10)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_pmelj"]
-a = Vector2(0, -10)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jl176"]
-a = Vector2(16, 0)
-b = Vector2(-16, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_1t2ip"]
-a = Vector2(16, 0)
-b = Vector2(-16, 0)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvusy"]
 size = Vector2(32, 20.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odtsd"]
+size = Vector2(38, 26)
+
 [node name="Tree" type="Area2D"]
-position = Vector2(9, -18)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_7cisq")
@@ -117,22 +105,6 @@ debug_color = Color(0, 1, 0.670588, 0.419608)
 sprite_frames = SubResource("SpriteFrames_t22dq")
 animation = &"TreeHit"
 
-[node name="TreeCollisionLeft" type="CollisionShape2D" parent="."]
-position = Vector2(-18, 68)
-shape = SubResource("SegmentShape2D_7ogkg")
-
-[node name="TreeCollisionRight" type="CollisionShape2D" parent="."]
-position = Vector2(18, 68)
-shape = SubResource("SegmentShape2D_pmelj")
-
-[node name="TreeCollisionUp" type="CollisionShape2D" parent="."]
-position = Vector2(0, 56)
-shape = SubResource("SegmentShape2D_jl176")
-
-[node name="TreeCollisionDown" type="CollisionShape2D" parent="."]
-position = Vector2(0, 80)
-shape = SubResource("SegmentShape2D_1t2ip")
-
 [node name="TreeRespawn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -148,6 +120,10 @@ gravity_scale = 0.0
 position = Vector2(0, 68)
 shape = SubResource("RectangleShape2D_kvusy")
 debug_color = Color(0.846322, 0.326808, 0.494536, 0.42)
+
+[node name="ColisionTalar" type="CollisionShape2D" parent="."]
+position = Vector2(0, 68)
+shape = SubResource("RectangleShape2D_odtsd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

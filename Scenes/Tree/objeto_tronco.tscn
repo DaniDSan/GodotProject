@@ -65,7 +65,6 @@ animations = [{
 radius = 13.0
 
 [node name="ObjetoTronco" type="Area2D"]
-show_behind_parent = true
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_ri5wr")
